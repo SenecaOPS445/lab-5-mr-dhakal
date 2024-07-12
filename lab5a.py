@@ -15,14 +15,19 @@ def read_file_list(file_name):
     # Takes a file_name as string for a file name, 
 
     f = open('data.txt', 'r')
-    li = f.read()
-    li.split('\n')
-    list_lines = li.split('\n')
+    li = f.readlines()
     f.close()
 
+    result = []
+    for line in li:
+        if line[-1] == '\n':
+            result.append(line[:-1])
+        else:
+            result.append(line)
+    
     
     # return its entire contents as a list of lines without new-line characters
-    return list_lines
+    return result
 
 if __name__ == '__main__':
     file_name = 'data.txt'
